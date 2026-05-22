@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #F5F0E6;
+  --color-card: #FFFDF8;
+  --color-text: #1C1814;
+  --color-muted: #7A746E;
+  --color-accent: #C47B50;
+  --color-border: #DDD7CB;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-cormorant), Georgia, serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark page variant (home page) */
+.dark-page {
+  background-color: #141010;
+  color: #E8D8B8;
+}
+
+/* Subtle paper grain texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Selection */
+::selection {
+  background-color: #C47B50;
+  color: #FFFDF8;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* ─── Typography ────────────────────────── */
+.font-hand {
+  font-family: var(--font-gochi-hand), cursive;
+}
+.font-serif {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+/* ─── Doodle SVG animation ──────────────── */
+.doodle-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 0.8s ease;
+}
+.doodle-path.animate {
+  stroke-dashoffset: 0;
+}
+
+/* ─── Link hover doodle underline ─────── */
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 1px;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Card flip ───────────────────────── */
+.card-flip-wrapper {
+  perspective: 1000px;
+}
+.card-flip-inner {
+  transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  inset: 0;
+}
+
+/* ─── Hover marker underline (hand-drawn feel) ── */
+@keyframes markerDraw {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+.marker-underline {
+  position: relative;
+  display: inline;
+}
+.marker-underline::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -1px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.4s ease;
+}
+.marker-underline:hover::after,
+.group:hover .marker-underline::after {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* ─── Stagger animations ──────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.7s ease forwards;
+}
+.animate-slide-in {
+  animation: slideIn 0.5s ease forwards;
+}
+
+/* ─── Section divider ─────────────────── */
+.section-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  position: relative;
+}
+
+/* ─── Metric highlight ─────────────────── */
+.metric {
+  font-family: var(--font-cormorant), serif;
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--color-text);
+}
