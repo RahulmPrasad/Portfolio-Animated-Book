@@ -39,11 +39,7 @@ export default function HomePage() {
           className="hp-book-cover"
           style={{
             margin: "3rem 8rem 0",
-            background: "#BF3525",
-            backgroundImage: `
-              radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.12) 0%, transparent 50%)
-            `,
+            background: "#a01000",
             borderRadius: 28,
             padding: "20px 20px 32px",
             display: "flex",
