@@ -1,0 +1,12 @@
+[build]
+  command   = "npm run build"
+  publish   = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Serve every route — Next.js static export puts each page in its own folder
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
