@@ -191,6 +191,9 @@ const LEFT_ICONS = [
   IconPlant,
   IconCompass,
   IconDragonEgg,
+  IconWarrior,
+  IconMask,
+  IconCursor
 ];
 
 const RIGHT_ICONS = [
@@ -204,6 +207,9 @@ const RIGHT_ICONS = [
   IconMask,
   IconFlower,
   IconCompass,
+  IconWarrior,
+  IconDragonEgg,
+  IconCursor
 ];
 
 interface Props {
@@ -215,8 +221,17 @@ export default function SideIconPanel({ side }: Props) {
 
   return (
     <div
-      className={`side-panel side-panel--${side} hidden md:flex flex-col items-stretch shrink-0`}
-      style={{ width: 64, background: "#141010" }}
+      className={`side-panel side-panel--${side} hidden md:flex flex-col items-stretch`}
+      style={{
+        position: "fixed",
+        top: 0,
+        [side]: 0,
+        width: 64,
+        height: "100vh",
+        overflowY: "hidden",
+        zIndex: 50,
+        background: "#141010",
+      }}
     >
       {icons.map((Icon, i) => (
         <motion.div
@@ -228,6 +243,7 @@ export default function SideIconPanel({ side }: Props) {
             background: TILE_BG,
             border: `1px solid ${TILE_BORDER}`,
             padding: 10,
+            flexShrink: 0,
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

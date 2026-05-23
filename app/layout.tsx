@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Gochi_Hand, Cormorant_Garamond, Inter } from "next/font/google";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const gochiHand = Gochi_Hand({
@@ -44,7 +45,9 @@ export default function RootLayout({
       lang="en"
       className={`${gochiHand.variable} ${cormorant.variable} ${inter.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
