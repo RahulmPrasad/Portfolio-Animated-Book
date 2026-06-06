@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-const RED = "#C84535";
-const TILE_BG = "#1E1410";
-const TILE_BORDER = "#2E1E18";
+const RED = "#4A7A5A";
+const TILE_BG = "#E8E2D4";
+const TILE_BORDER = "#D5CEBC";
 
 /* ── Individual icon SVGs ───────────────── */
 
@@ -230,7 +230,7 @@ export default function SideIconPanel({ side }: Props) {
         height: "100vh",
         overflowY: "hidden",
         zIndex: 50,
-        background: "#141010",
+        background: "#EDE8D4",
       }}
     >
       {icons.map((Icon, i) => (
@@ -248,7 +248,7 @@ export default function SideIconPanel({ side }: Props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.05 * i, duration: 0.4 }}
-          whileHover={{ background: "#2A1810" }}
+          whileHover={{ background: "#D8D0BC" }}
         >
           <Icon />
         </motion.div>

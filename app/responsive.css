@@ -1,0 +1,27 @@
+@media (max-width: 576px) {
+    .nav-dark{
+        padding-top : 4rem !important;
+    }
+
+    .hp-center-col{
+    margin-left : 0 !important;
+    margin-right : 0 !important
+   }
+
+   .hp-book-cover{
+    margin : 3rem 0 0 !important;
+   }
+
+   .footer-inner{
+    padding : 0 !important;
+   }
+
+   .footer-card__inner{
+    flex-direction : column-reverse !important;
+   }
+
+   .footer-card__cta{
+    text-align : center !important;
+    width : 100% !important;
+   }
+}

@@ -3,9 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const RED = "#C84535";
-const CREAM = "#E8D8B8";
-const DARK = "#141010";
+const CREAM = "#2A3D2E";
+const DARK = "#EDE8D4";
 
 /* ═══════════════════════════════════════════════════════
    MAIN SECTION
@@ -49,10 +48,10 @@ export default function WorkPreviewSection() {
         >
           <div style={{
             background: "#FAF8F0",
-            backgroundImage: `repeating-linear-gradient(transparent, transparent 31px, rgba(100,130,210,0.28) 31px, rgba(100,130,210,0.28) 32px)`,
+            backgroundImage: `repeating-linear-gradient(transparent, transparent 31px, rgba(30,80,50,0.22) 31px, rgba(30,80,50,0.22) 32px)`,
             backgroundSize: "100% 32px",
             backgroundPosition: "0 12px",
-            borderLeft: "3.5px solid rgba(200,69,53,0.45)",
+            borderLeft: "3.5px solid rgba(74,122,90,0.45)",
             padding: "12px 16px 20px 20px",
             boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
           }}>

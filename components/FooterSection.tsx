@@ -3,10 +3,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const RED = "#C84535";
-const CREAM = "#E8D8B8";
-const PAPER = "#EDE0C4";
-const DARK = "#141010";
+const RED = "#4A7A5A";
+const CREAM = "#2A3D2E";
+const PAPER = "#F5F0E2";
+const DARK = "#EDE8D4";
 
 export default function FooterSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -205,12 +205,12 @@ export default function FooterSection() {
       <div
         className="footer-marquee"
         style={{
-          borderTop: "1px solid rgba(232,216,184,0.12)",
-          borderBottom: "1px solid rgba(232,216,184,0.12)",
+          borderTop: "1px solid rgba(74,122,90,0.18)",
+          borderBottom: "1px solid rgba(74,122,90,0.18)",
           padding: "14px 0",
           overflow: "hidden",
           position: "relative",
-          background: "rgba(232,216,184,0.04)",
+          background: "rgba(74,122,90,0.06)",
         }}
       >
         <motion.div

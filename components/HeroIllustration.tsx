@@ -1,6 +1,6 @@
 "use client";
 
-const RED = "#C84535";
+const RED = "#4A7A5A";
 
 export default function HeroIllustration() {
   return (

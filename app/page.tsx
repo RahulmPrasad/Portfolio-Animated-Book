@@ -13,12 +13,13 @@ import Link from "next/link";
 import HeroIllustration from "@/components/HeroIllustration";
 import SideIconPanel from "@/components/SideIconPanel";
 import WorkPreviewSection from "@/components/WorkPreviewSection";
+import ProjectBoardSection from "@/components/ProjectBoardSection";
 import FooterSection from "@/components/FooterSection";
 
-const RED = "#C84535";
-const DARK = "#141010";
-const PAPER = "#EDE0C4";
-const PAPER_PLAIN = "#E8D8B4";
+const RED = "#4A7A5A";
+const DARK = "#EDE8D4";
+const PAPER = "#FAF7EE";
+const PAPER_PLAIN = "#F5F0E2";
 
 /* ═══════════════════════════════════════════════════════
    HOME PAGE
@@ -39,7 +40,7 @@ export default function HomePage() {
           className="hp-book-cover"
           style={{
             margin: "3rem 8rem 0",
-            background: "#a01000",
+            background: "#1A4D2E",
             borderRadius: 28,
             padding: "20px 20px 32px",
             display: "flex",
@@ -53,6 +54,7 @@ export default function HomePage() {
         </div>
 
         <WorkPreviewSection />
+        <ProjectBoardSection />
         <FooterSection />
       </div>
 
@@ -90,11 +92,11 @@ function DarkNav() {
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
           aria-label="Home"
         >
-          <circle cx="13" cy="13" r="11" stroke="#E8D8B8" strokeWidth="1.5" />
-          <circle cx="9.5" cy="11.5" r="2" fill="#E8D8B8" />
-          <circle cx="16.5" cy="11.5" r="2" fill="#E8D8B8" />
+          <circle cx="13" cy="13" r="11" stroke="#2A3D2E" strokeWidth="1.5" />
+          <circle cx="9.5" cy="11.5" r="2" fill="#2A3D2E" />
+          <circle cx="16.5" cy="11.5" r="2" fill="#2A3D2E" />
           <path d="M 8.5 17 C 10.5 20.5, 15.5 20.5, 17.5 17"
-            stroke="#E8D8B8" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+            stroke="#2A3D2E" strokeWidth="1.5" strokeLinecap="round" fill="none" />
         </motion.svg>
       </Link>
 
@@ -117,9 +119,9 @@ function DarkNavItem({ label, href, isExternal }: { label: string; href: string;
       <Tag
         href={href}
         className="nav-dark__link font-hand text-xl transition-colors duration-200"
-        style={{ color: "#E8D8B8" }}
+        style={{ color: "#2A3D2E" }}
         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = RED)}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#E8D8B8")}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#2A3D2E")}
       >
         {label}
       </Tag>
@@ -148,8 +150,8 @@ function HeroCard() {
         border: `5px solid ${RED}`,
         background: PAPER,
         backgroundImage: `
-          linear-gradient(rgba(60,90,180,0.13) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(60,90,180,0.13) 1px, transparent 1px)
+          linear-gradient(rgba(30,80,50,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(30,80,50,0.10) 1px, transparent 1px)
         `,
         backgroundSize: "30px 30px",
         height: "80vh",
@@ -291,8 +293,8 @@ function BeliefsPage() {
           className="beliefs-card__grid absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(60,90,180,0.07) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(60,90,180,0.07) 1px, transparent 1px)
+              linear-gradient(rgba(30,80,50,0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(30,80,50,0.07) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px",
             borderRadius: 16,
@@ -356,10 +358,10 @@ function StickyNoteLinedPaper({
           className="note-lined__inner"
           style={{
             background: "#FAF8F0",
-            backgroundImage: `repeating-linear-gradient(transparent, transparent 31px, rgba(100,130,210,0.28) 31px, rgba(100,130,210,0.28) 32px)`,
+            backgroundImage: `repeating-linear-gradient(transparent, transparent 31px, rgba(30,80,50,0.22) 31px, rgba(30,80,50,0.22) 32px)`,
             backgroundSize: "100% 32px",
             backgroundPosition: "0 12px",
-            borderLeft: `3.5px solid rgba(${parseInt(RED.slice(1, 3), 16)},${parseInt(RED.slice(3, 5), 16)},${parseInt(RED.slice(5, 7), 16)}, 0.45)`,
+            borderLeft: `3.5px solid rgba(74,122,90,0.45)`,
             padding: "12px 16px 20px 20px",
             boxShadow: "2px 5px 18px rgba(0,0,0,0.12)",
           }}
@@ -517,14 +519,14 @@ function BeliefsDoodles({ isInView }: { isInView: boolean }) {
 function JuiceBoxSketch() {
   return (
     <svg className="sketch-juice__svg" width="85" height="105" viewBox="0 0 85 105" fill="none" aria-hidden>
-      <rect x="18" y="28" width="48" height="58" rx="4" stroke="#E8D8B8" strokeWidth="1.5" />
-      <path d="M 18 38 L 66 38" stroke="#E8D8B8" strokeWidth="1" strokeDasharray="3 2" />
-      <circle cx="42" cy="57" r="13" stroke="#E8D8B8" strokeWidth="1.2" />
-      <path d="M 35 57 C 37 52, 46 52, 49 57 C 46 62, 37 62, 35 57" stroke="#E8D8B8" strokeWidth="1" fill="none" />
-      <path d="M 48 28 L 52 6" stroke="#E8D8B8" strokeWidth="2" strokeLinecap="round" />
-      <ellipse cx="50" cy="28" rx="3" ry="2" stroke="#E8D8B8" strokeWidth="1" />
-      <circle cx="28" cy="45" r="1.5" fill="#E8D8B8" fillOpacity="0.5" />
-      <circle cx="34" cy="45" r="1.5" fill="#E8D8B8" fillOpacity="0.5" />
+      <rect x="18" y="28" width="48" height="58" rx="4" stroke="#2A3D2E" strokeWidth="1.5" />
+      <path d="M 18 38 L 66 38" stroke="#2A3D2E" strokeWidth="1" strokeDasharray="3 2" />
+      <circle cx="42" cy="57" r="13" stroke="#2A3D2E" strokeWidth="1.2" />
+      <path d="M 35 57 C 37 52, 46 52, 49 57 C 46 62, 37 62, 35 57" stroke="#2A3D2E" strokeWidth="1" fill="none" />
+      <path d="M 48 28 L 52 6" stroke="#2A3D2E" strokeWidth="2" strokeLinecap="round" />
+      <ellipse cx="50" cy="28" rx="3" ry="2" stroke="#2A3D2E" strokeWidth="1" />
+      <circle cx="28" cy="45" r="1.5" fill="#2A3D2E" fillOpacity="0.5" />
+      <circle cx="34" cy="45" r="1.5" fill="#2A3D2E" fillOpacity="0.5" />
     </svg>
   );
 }
@@ -533,15 +535,15 @@ function DragonSketch() {
   return (
     <svg className="sketch-dragon__svg" width="105" height="115" viewBox="0 0 105 115" fill="none" aria-hidden>
       <path d="M 22 95 C 20 78, 28 67, 42 60 C 54 54, 65 57, 74 50 C 82 43, 78 32, 70 26"
-        stroke="#E8D8B8" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+        stroke="#2A3D2E" strokeWidth="1.8" strokeLinecap="round" fill="none" />
       <path d="M 70 26 C 75 18, 83 15, 88 21 C 93 27, 91 36, 84 38 C 77 40, 70 35, 70 26"
-        stroke="#E8D8B8" strokeWidth="1.8" fill="none" />
-      <circle cx="83" cy="24" r="3.5" fill="#E8D8B8" fillOpacity="0.8" />
-      <circle cx="91" cy="30" r="1.8" stroke="#E8D8B8" strokeWidth="1" />
-      <path d="M 85 38 L 83 44 M 89 36 L 89 42" stroke="#E8D8B8" strokeWidth="1.2" strokeLinecap="round" />
-      <path d="M 57 53 L 54 44 L 62 53 M 46 59 L 42 51 L 50 59" stroke="#E8D8B8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M 22 95 C 13 100, 9 106, 11 111" stroke="#E8D8B8" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M 47 72 L 42 86 L 37 92 M 57 67 L 57 84 L 52 90" stroke="#E8D8B8" strokeWidth="1.5" strokeLinecap="round" />
+        stroke="#2A3D2E" strokeWidth="1.8" fill="none" />
+      <circle cx="83" cy="24" r="3.5" fill="#2A3D2E" fillOpacity="0.8" />
+      <circle cx="91" cy="30" r="1.8" stroke="#2A3D2E" strokeWidth="1" />
+      <path d="M 85 38 L 83 44 M 89 36 L 89 42" stroke="#2A3D2E" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M 57 53 L 54 44 L 62 53 M 46 59 L 42 51 L 50 59" stroke="#2A3D2E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M 22 95 C 13 100, 9 106, 11 111" stroke="#2A3D2E" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M 47 72 L 42 86 L 37 92 M 57 67 L 57 84 L 52 90" stroke="#2A3D2E" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -549,10 +551,10 @@ function DragonSketch() {
 function PenSketch() {
   return (
     <svg className="sketch-pen__svg" width="55" height="55" viewBox="0 0 55 55" fill="none" aria-hidden>
-      <path d="M 12 48 L 44 12 L 50 18 L 18 54 Z" stroke="#E8D8B8" strokeWidth="1.5" strokeLinejoin="round" fill="none" />
-      <path d="M 44 12 L 49 7 L 50 18 Z" stroke="#E8D8B8" strokeWidth="1.2" fill="none" />
-      <path d="M 12 48 L 15 53 L 18 54 L 12 48" stroke="#E8D8B8" strokeWidth="1.2" fill="none" />
-      <path d="M 38 18 L 16 48" stroke="#E8D8B8" strokeWidth="0.8" strokeDasharray="3 3" />
+      <path d="M 12 48 L 44 12 L 50 18 L 18 54 Z" stroke="#2A3D2E" strokeWidth="1.5" strokeLinejoin="round" fill="none" />
+      <path d="M 44 12 L 49 7 L 50 18 Z" stroke="#2A3D2E" strokeWidth="1.2" fill="none" />
+      <path d="M 12 48 L 15 53 L 18 54 L 12 48" stroke="#2A3D2E" strokeWidth="1.2" fill="none" />
+      <path d="M 38 18 L 16 48" stroke="#2A3D2E" strokeWidth="0.8" strokeDasharray="3 3" />
     </svg>
   );
 }

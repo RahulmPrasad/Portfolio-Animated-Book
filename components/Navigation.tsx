@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const RED = "#C84535";
+const RED = "#4A7A5A";
 
 interface Props {
   dark?: boolean;

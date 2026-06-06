@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Gochi_Hand, Cormorant_Garamond, Inter } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
+import "./responsive.css";
 
 const gochiHand = Gochi_Hand({
   weight: "400",
@@ -25,11 +26,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Jackie Zhang — Product Designer",
+  title: "Rahul Prasad",
   description:
     "I design tools that help people do their best work. Product designer based in Cape Town, South Africa.",
   openGraph: {
-    title: "Jackie Zhang — Product Designer",
+    title: "Rahul Prasad",
     description: "I design tools that help people do their best work.",
     type: "website",
   },

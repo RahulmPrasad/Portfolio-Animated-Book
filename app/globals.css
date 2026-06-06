@@ -7,7 +7,7 @@
   --color-card: #FFFDF8;
   --color-text: #1C1814;
   --color-muted: #7A746E;
-  --color-accent: #C47B50;
+  --color-accent: #4A7A5A;
   --color-border: #DDD7CB;
 }
 
@@ -30,10 +30,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Dark page variant (home page) */
+/* Light page variant (home page) */
 .dark-page {
-  background-color: #141010;
-  color: #E8D8B8;
+  background-color: #EDE8D4;
+  color: #2A3D2E;
 }
 
 /* Subtle paper grain texture */
@@ -49,8 +49,8 @@ body::after {
 
 /* Selection */
 ::selection {
-  background-color: #C47B50;
-  color: #FFFDF8;
+  background-color: #4A7A5A;
+  color: #FAF7EE;
 }
 
 /* Scrollbar */
