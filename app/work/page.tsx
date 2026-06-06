@@ -180,7 +180,7 @@ export default function WorkPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {sideQuests.map((project, i) => (
               <AnimatedSection key={project.name} delay={i * 0.1}>
-                <div className="group bg-card border border-border rounded-2xl p-6 h-full hover:border-ink-muted transition-all duration-300 hover:-translate-y-1">
+                <div className="group bg-card border border-border rounded-2xl p-6 h-full paper-card hover:border-ink-muted transition-all duration-300 hover:-translate-y-1">
                   <span className="inline-block font-sans text-xs tracking-widest uppercase text-ink-light border border-border-light rounded-full px-3 py-1 mb-4">
                     {project.tag}
                   </span>
@@ -275,7 +275,7 @@ function FlipProjectCard({ project, index }: { project: Project; index: number }
         >
           {/* ── FRONT ─── */}
           <div
-            className="w-full bg-card border border-border rounded-2xl p-6 md:p-8"
+            className="w-full bg-card border border-border rounded-2xl p-6 md:p-8 paper-card"
             style={{ backfaceVisibility: "hidden" }}
           >
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">

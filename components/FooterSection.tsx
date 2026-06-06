@@ -54,7 +54,7 @@ export default function FooterSection() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         >
           <div
-            className="footer-card__inner"
+            className="footer-card__inner paper-card"
             style={{
               background: PAPER,
               borderRadius: 24,

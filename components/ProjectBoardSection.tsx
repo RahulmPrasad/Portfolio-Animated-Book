@@ -11,6 +11,8 @@ const DARK = "#EDE8D4";
 const GRID = "rgba(30,80,50,0.09)";
 const CELL = 42;
 
+// YELLOW BACKGROUND : #f9f0cc
+
 /* ═══════════════════════════════════════════════════════
    MAIN SECTION
 ═══════════════════════════════════════════════════════ */
@@ -22,6 +24,7 @@ export default function ProjectBoardSection() {
     <section ref={ref} style={{ background: DARK, padding: "20px 0 40px" }}>
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 48px" }}>
         <motion.div
+          className="paper-card"
           style={{
             position: "relative",
             background: BOARD,

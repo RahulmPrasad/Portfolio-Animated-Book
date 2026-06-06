@@ -145,7 +145,7 @@ function DarkNavItem({ label, href, isExternal }: { label: string; href: string;
 function HeroCard() {
   return (
     <motion.div
-      className="hero-card relative w-full rounded-[20px] overflow-hidden"
+      className="hero-card paper-card relative w-full rounded-[20px] overflow-hidden"
       style={{
         border: `5px solid ${RED}`,
         background: PAPER,
@@ -272,7 +272,7 @@ function BeliefsPage() {
       style={{ perspective: "1800px", perspectiveOrigin: "50% 0%", marginTop: 6 }}
     >
       <motion.div
-        className="beliefs-card"
+        className="beliefs-card paper-card"
         style={{
           rotateX,
           opacity: opacityRaw,

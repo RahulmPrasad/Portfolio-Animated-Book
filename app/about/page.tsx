@@ -117,7 +117,7 @@ export default function AboutPage() {
             {nerdInterests.map((item, i) => (
               <AnimatedSection key={item.title} delay={i * 0.1}>
                 <div className="group">
-                  <div className="relative mb-4 h-40 bg-cream-dark rounded-xl overflow-hidden flex items-center justify-center border border-border group-hover:border-ink-muted transition-colors duration-300">
+                  <div className="relative mb-4 h-40 bg-cream-dark rounded-xl overflow-hidden flex items-center justify-center border border-border paper-card group-hover:border-ink-muted transition-colors duration-300">
                     <span className="text-5xl" aria-hidden>{item.emoji}</span>
                     {/* Doodle corner accent */}
                     <svg
