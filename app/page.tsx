@@ -26,7 +26,7 @@ const PAPER_PLAIN = "#F5F0E2";
 ═══════════════════════════════════════════════════════ */
 export default function HomePage() {
   return (
-    <main className="hp-root min-h-screen relative overflow-x-hidden" style={{ background: DARK }}>
+    <main className="hp-root min-h-screen relative overflow-x-hidden">
       {/* Fixed side panels — rendered outside flex so they don't affect layout flow */}
       <SideIconPanel side="left" />
       <SideIconPanel side="right" />
@@ -165,7 +165,7 @@ function HeroCard() {
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
     >
       <div className="hero-card__inner flex flex-col md:flex-row min-h-[400px] md:min-h-[440px]" style={{ width: "100%" }}>
-        <div className="hero-card__content flex flex-col justify-between p-8 md:p-10 lg:p-12 flex-1 z-10">
+        <div className="hero-card__content flex flex-col justify-between p-8 md:p-10 lg:p-12 flex-1 z-10" style={{ gap: "0.5rem" }}>
           <motion.div
             className="hero-card__header"
             initial={{ opacity: 0, y: 14 }}
@@ -265,6 +265,18 @@ function BeliefsPage() {
   const notePlainR  = useSpring(useTransform(exitProgress, [0.1, 1], [0,  -14]),  { stiffness: 36, damping: 22, mass: 1.4 });
   const notePlainOp = useSpring(useTransform(exitProgress, [0.1, 0.6, 1], [1, 1, 0]),  { stiffness: 60, damping: 25 });
 
+  /* ── Note yellow: exits upward center, spinning right ── */
+  const noteYellowY  = useSpring(useTransform(exitProgress, [0.08, 1], [0, -360]), { stiffness: 42, damping: 22, mass: 1.3 });
+  const noteYellowX  = useSpring(useTransform(exitProgress, [0.08, 1], [0,   40]), { stiffness: 42, damping: 22, mass: 1.3 });
+  const noteYellowR  = useSpring(useTransform(exitProgress, [0.08, 1], [0,   18]), { stiffness: 42, damping: 22, mass: 1.3 });
+  const noteYellowOp = useSpring(useTransform(exitProgress, [0.08, 0.58, 1], [1, 1, 0]), { stiffness: 60, damping: 25 });
+
+  /* ── Note white: exits lower-left ───────────────────── */
+  const noteWhiteY  = useSpring(useTransform(exitProgress, [0.15, 1], [0,  260]), { stiffness: 38, damping: 22, mass: 1.5 });
+  const noteWhiteX  = useSpring(useTransform(exitProgress, [0.15, 1], [0, -170]), { stiffness: 38, damping: 22, mass: 1.5 });
+  const noteWhiteR  = useSpring(useTransform(exitProgress, [0.15, 1], [0,  -18]), { stiffness: 38, damping: 22, mass: 1.5 });
+  const noteWhiteOp = useSpring(useTransform(exitProgress, [0.15, 0.65, 1], [1, 1, 0]), { stiffness: 60, damping: 25 });
+
   return (
     <div
       className="beliefs-perspective"
@@ -285,7 +297,7 @@ function BeliefsPage() {
           /* overflow visible so notes can fly out through the top */
           overflow: "visible",
           padding: "40px 40px 60px",
-          minHeight: 520,
+          height: "80vh",
         }}
       >
         {/* Subtle grid lines */}
@@ -308,14 +320,16 @@ function BeliefsPage() {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.9, duration: 0.5 }}
         >
-          3 things I strongly believe in
+          5 things I strongly believe in
         </motion.p>
 
         {/* Sticky notes with scroll-driven exit */}
-        <div className="beliefs-card__notes relative mt-6" style={{ minHeight: 380 }}>
-          <StickyNoteLinedPaper isInView={isInView} exitY={noteLinedY} exitX={noteLinedX} exitRotate={noteLinedR} exitOpacity={noteLinedOp} />
-          <StickyNoteGrid      isInView={isInView} exitY={noteGridY}  exitX={noteGridX}  exitRotate={noteGridR}  exitOpacity={noteGridOp}  />
-          <StickyNotePlain     isInView={isInView} exitY={notePlainY} exitX={notePlainX} exitRotate={notePlainR} exitOpacity={notePlainOp} />
+        <div className="beliefs-card__notes relative mt-6" style={{ minHeight: 420 }}>
+          <StickyNoteLinedPaper isInView={isInView} exitY={noteLinedY}   exitX={noteLinedX}   exitRotate={noteLinedR}   exitOpacity={noteLinedOp}   />
+          <StickyNoteGrid       isInView={isInView} exitY={noteGridY}    exitX={noteGridX}    exitRotate={noteGridR}    exitOpacity={noteGridOp}    />
+          <StickyNotePlain      isInView={isInView} exitY={notePlainY}   exitX={notePlainX}   exitRotate={notePlainR}   exitOpacity={notePlainOp}   />
+          <StickyNoteYellow     isInView={isInView} exitY={noteYellowY}  exitX={noteYellowX}  exitRotate={noteYellowR}  exitOpacity={noteYellowOp}  />
+          <StickyNoteWhite      isInView={isInView} exitY={noteWhiteY}   exitX={noteWhiteX}   exitRotate={noteWhiteR}   exitOpacity={noteWhiteOp}   />
         </div>
 
         <BeliefsDoodles isInView={isInView} />
@@ -364,8 +378,10 @@ function StickyNoteLinedPaper({
             borderLeft: `3.5px solid rgba(74,122,90,0.45)`,
             padding: "12px 16px 20px 20px",
             boxShadow: "2px 5px 18px rgba(0,0,0,0.12)",
+            position: "relative",
           }}
         >
+          <PushPin color="#2A5A3A" />
           <p className="note-lined__text font-hand" style={{ color: "#1C1814", fontSize: "1.85rem", lineHeight: "32px", margin: 0 }}>
             tirelessly<br />pursue<br />clarity.
           </p>
@@ -407,8 +423,10 @@ function StickyNoteGrid({
             backgroundSize: "18px 18px",
             padding: "20px 22px",
             boxShadow: "2px 5px 18px rgba(0,0,0,0.18)",
+            position: "relative",
           }}
         >
+          <PushPin color="#3A3A6A" />
           <p className="note-grid__text" style={{ fontFamily: "'Courier New', monospace", color: "#1C1814", fontSize: "1.35rem", lineHeight: 1.45, fontWeight: "bold", margin: 0 }}>
             Software<br />should<br />empower.
           </p>
@@ -444,13 +462,135 @@ function StickyNotePlain({
       >
         <div
           className="note-plain__inner"
-          style={{ background: "#C8B492", padding: "22px 24px 28px", borderRadius: 4, boxShadow: "2px 5px 18px rgba(0,0,0,0.14)" }}
+          style={{ background: "#C8B492", padding: "22px 24px 28px", borderRadius: 4, boxShadow: "2px 5px 18px rgba(0,0,0,0.14)", position: "relative" }}
         >
+          <PushPin color="#7A3A1A" />
           <svg className="note-plain__icon" width="24" height="22" viewBox="0 0 24 22" fill="none" style={{ marginBottom: 8 }} aria-hidden>
             <path d="M 12 19 C 12 19, 2 13, 2 7 C 2 4, 4 2, 7 2 C 9 2, 11 3, 12 5 C 13 3, 15 2, 17 2 C 20 2, 22 4, 22 7 C 22 13, 12 19, 12 19Z" stroke="#1C1814" strokeWidth="1.5" fill="none" />
           </svg>
           <p className="note-plain__text font-hand" style={{ color: "#1C1814", fontSize: "2.2rem", fontStyle: "italic", lineHeight: 1.2, margin: 0 }}>
             Design for<br />moments
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
+   PUSH PIN  (sits on top of each sticky note card)
+═══════════════════════════════════════════════════════ */
+function PushPin({ color = "#4A7A5A" }: { color?: string }) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: -14,
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 10,
+        pointerEvents: "none",
+        filter: "drop-shadow(0 3px 5px rgba(0,0,0,0.30))",
+      }}
+    >
+      <svg width="24" height="32" viewBox="0 0 24 32" fill="none" aria-hidden>
+        <line x1="12" y1="18" x2="12" y2="31" stroke="#B0A898" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="12" cy="10" r="9" fill={color} />
+        <circle cx="12" cy="10" r="9" stroke="rgba(0,0,0,0.12)" strokeWidth="1" fill="none" />
+        <ellipse cx="9" cy="7" rx="3.5" ry="2.5" fill="rgba(255,255,255,0.40)" />
+        <circle cx="12" cy="10" r="3" fill="rgba(0,0,0,0.20)" />
+      </svg>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
+   STICKY NOTE — YELLOW  (classic Post-it, center-top)
+═══════════════════════════════════════════════════════ */
+function StickyNoteYellow({
+  isInView,
+  exitY,
+  exitX,
+  exitRotate,
+  exitOpacity,
+}: {
+  isInView: boolean;
+  exitY: MotionValue<number>;
+  exitX: MotionValue<number>;
+  exitRotate: MotionValue<number>;
+  exitOpacity: MotionValue<number>;
+}) {
+  return (
+    <motion.div
+      className="note-yellow absolute"
+      style={{ left: "32%", top: 50, width: 205, zIndex: 5, cursor: "default", y: exitY, x: exitX, rotate: exitRotate, opacity: exitOpacity }}
+    >
+      <motion.div
+        initial={{ y: 24, rotate: 4, opacity: 0 }}
+        animate={isInView ? { y: 0, rotate: 4, opacity: 1 } : {}}
+        transition={{ delay: 1.7, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        whileHover={{ rotate: 2, scale: 1.03 }}
+      >
+        <div
+          className="note-yellow__inner"
+          style={{
+            background: "#F9F0CC",
+            padding: "18px 20px 24px",
+            boxShadow: "2px 5px 18px rgba(0,0,0,0.14)",
+            position: "relative",
+          }}
+        >
+          <PushPin color="#A03020" />
+          <p className="font-hand" style={{ color: "#3A2A0A", fontSize: "1.75rem", lineHeight: 1.3, margin: 0 }}>
+            ship things<br />you&rsquo;re<br />proud of.
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
+   STICKY NOTE — WHITE  (clean card, bottom-left)
+═══════════════════════════════════════════════════════ */
+function StickyNoteWhite({
+  isInView,
+  exitY,
+  exitX,
+  exitRotate,
+  exitOpacity,
+}: {
+  isInView: boolean;
+  exitY: MotionValue<number>;
+  exitX: MotionValue<number>;
+  exitRotate: MotionValue<number>;
+  exitOpacity: MotionValue<number>;
+}) {
+  return (
+    <motion.div
+      className="note-white absolute"
+      style={{ left: "4%", bottom: 10, width: 195, zIndex: 6, cursor: "default", y: exitY, x: exitX, rotate: exitRotate, opacity: exitOpacity }}
+    >
+      <motion.div
+        initial={{ y: 24, rotate: 2, opacity: 0 }}
+        animate={isInView ? { y: 0, rotate: 2, opacity: 1 } : {}}
+        transition={{ delay: 1.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        whileHover={{ rotate: 0, scale: 1.03 }}
+      >
+        <div
+          className="note-white__inner"
+          style={{
+            background: "#F8F6F0",
+            border: "1px solid rgba(30,80,50,0.15)",
+            padding: "20px 22px 26px",
+            borderRadius: 4,
+            boxShadow: "2px 5px 14px rgba(0,0,0,0.10)",
+            position: "relative",
+          }}
+        >
+          <PushPin color="#4A7A5A" />
+          <p className="font-hand" style={{ color: "#1C1814", fontSize: "2rem", lineHeight: 1.25, margin: 0 }}>
+            less,<br />but<br />better.
           </p>
         </div>
       </motion.div>
